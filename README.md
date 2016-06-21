@@ -34,4 +34,4 @@ $ npm install
 $ npm run dev
 ```
 
-浏览器里打开`http://localhost:8081`
+浏览器里打开`http://localhost:8080`
