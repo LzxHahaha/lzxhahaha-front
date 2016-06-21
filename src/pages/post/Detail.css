@@ -1,0 +1,31 @@
+.header {
+    background-color: #09B97F;
+    height: 400px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    padding: 50px;
+    color: white;
+}
+
+.titleView {
+    text-align: center;
+    padding: 50px;
+}
+
+.titleText {
+    color: white;
+}
+
+.contentView {
+    background-color: white;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 5px 5px;
+}
+
+.shareView {
+    margin-top: 25px;
+}

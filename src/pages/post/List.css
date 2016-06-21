@@ -1,0 +1,28 @@
+.header {
+    background-color: #09B97F;
+    height: 400px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.centerRow {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.title {
+    color: white;
+}
+
+.list {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px;
+}
+
+.tag {
+    margin-left: 10px;
+    cursor: pointer;
+}
