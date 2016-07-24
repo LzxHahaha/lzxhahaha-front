@@ -4,13 +4,13 @@
 
 import {Grid, Well, Form, FormGroup, Col, FormControl, ControlLabel, Button, Label} from 'react-bootstrap';
 import {browserHistory} from 'react-router';
-import {connect} from 'react-redux';
 
 import MarkdownPreview from '../../components/MarkdownPreview';
 
-import Request from '../../utils/Request';
+import {isAdmin} from '../../logic/auth';
+import {getPostDetail, edit} from '../../logic/post';
 
-class Edit extends React.Component {
+export default class Edit extends React.Component {
   constructor(props) {
     super(props);
 
@@ -22,12 +22,12 @@ class Edit extends React.Component {
   }
 
   async componentWillMount() {
-    if (!this.props.token) {
+    if (!isAdmin()) {
       browserHistory.push(`/user/login?returnUrl=/post/edit/${this.props.params.id}`);
     }
 
     try {
-      let detail = await Request.get(`${Request.URL.postDetail}/${this.props.params.id}`);
+      let detail = await getPostDetail(this.props.params.id);
       this.setState({...detail});
     }
     catch (err) {
@@ -44,7 +44,7 @@ class Edit extends React.Component {
       this.setState({error: ''});
       const {title, content, category} = this.state;
 
-      await Request.post(`${Request.URL.postEdit}/${this.props.params.id}`, {title, content, category}, {'X-Token': this.props.token});
+      await edit(this.props.params.id, title, content, category);
       browserHistory.push('/post');
     }
     catch (err) {
@@ -136,7 +136,3 @@ class Edit extends React.Component {
     );
   }
 }
-
-export default connect(state => ({
-  token: state.session && state.session.token
-}))(Edit);

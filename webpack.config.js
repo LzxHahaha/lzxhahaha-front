@@ -7,7 +7,6 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: [
-    'babel-polyfill',
     'whatwg-fetch',
     './index.js'
   ],
@@ -51,5 +50,14 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true
+  },
+  externals: {
+    "jquery": "$",
+    "react": "React",
+    "react-dom": "ReactDOM",
+    "react-router": "ReactRouter",
+    "react-bootstrap": "ReactBootstrap",
+    "markdown": "markdown",
+    "urijs": "URI"
   }
 };

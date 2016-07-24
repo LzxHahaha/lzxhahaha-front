@@ -13,20 +13,22 @@ import Card from '../../components/Card';
 import Request from '../../utils/Request';
 import {setTitle} from '../../utils/helper';
 
+import {getPostList} from '../../logic/post';
+
 export default class List extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       data: [],
-      categorySet: null,
+      categorySet: [],
       tag: ''
     };
     setTitle('博客');
   }
 
   async componentWillMount() {
-    let data = await Request.get(Request.URL.postList);
+    let data = await getPostList();
     let categorySet = new Set();
     data.forEach(el=>{
       categorySet.add(el.category);
@@ -49,7 +51,7 @@ export default class List extends React.Component {
 
     // 改变地址栏
     browserHistory.push(tagText ? `/post?tag=${tagText}` : '/post');
-    let data = await Request.get(`${Request.URL.postList}?tag=${tagText}`);
+    let data = await getPostList(tagText);
 
     this.setState({tag: tagText, data});
   }

@@ -21,9 +21,10 @@ export default class PostItem extends React.Component {
   }
 
   componentWillMount() {
-    let html = markdown.parse(this.rawContent);
+    let html = markdown.toHTML(this.rawContent);
     let content = '';
-    $.parseHTML(html).forEach(el=>content += el.textContent);
+
+    ($.parseHTML(html) || []).forEach(el=>content += el.textContent);
     content = content.length > 200 ? content.substring(0, 200) + '...' : content;
     this.setState({content});
   }

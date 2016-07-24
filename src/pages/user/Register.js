@@ -2,13 +2,13 @@
  * Created by LzxHahaha on 2016/6/1.
  */
 
-import {connect} from 'react-redux';
-import {register} from '../../redux/modules/session';
 import { browserHistory } from 'react-router';
 
 import {Grid, Well, Form, FormGroup, Col, FormControl, ControlLabel, Button, Label} from 'react-bootstrap';
 
-class Register extends React.Component {
+import {register} from '../../logic/auth';
+
+export default class Register extends React.Component {
   constructor(props) {
     super(props);
 
@@ -25,7 +25,7 @@ class Register extends React.Component {
       const {username, password} = this.state;
       const returnUrl = (this.props.params && this.props.params.returnUrl) ? this.props.params.returnUrl : '';
 
-      await this.props.register(username, password);
+      await register(username, password);
       if (returnUrl) {
         browserHistory.push(returnUrl);
       }
@@ -97,7 +97,3 @@ class Register extends React.Component {
     );
   }
 }
-
-export default connect(state => ({}), dispatch => ({
-  register: (username, password) => dispatch(register(username, password))
-}))(Register);

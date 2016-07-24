@@ -14,6 +14,8 @@ import styles from './Detail.css';
 import Request from '../../utils/Request';
 import {formatTime, setTitle} from '../../utils/helper';
 
+import {getPostDetail} from '../../logic/post';
+
 export default class Detail extends React.Component {
   constructor(props) {
     super(props);
@@ -30,7 +32,7 @@ export default class Detail extends React.Component {
 
   async componentWillMount() {
     try {
-      let detail = await Request.get(`${Request.URL.postDetail}/${this.props.params.id}`);
+      let detail = await getPostDetail(this.props.params.id);
       this.setState({detail, currentId: this.props.params.id, isLoading: false});
 
       setTitle(detail.title);
@@ -44,7 +46,7 @@ export default class Detail extends React.Component {
     if (id) {
       browserHistory.push(`/post/detail/${id}`);
       this.setState({isLoading: true});
-      let detail = await Request.get(`${Request.URL.postDetail}/${id}`);
+      let detail = await getPostDetail(id);
       this.setState({detail, currentId: id, isLoading: false});
       setTitle(detail.title);
       window.scrollTo(0, 0);

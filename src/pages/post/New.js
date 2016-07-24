@@ -4,14 +4,13 @@
 
 import {Grid, Row, Well, Form, FormGroup, Col, FormControl, ControlLabel, Button, Label} from 'react-bootstrap';
 import {browserHistory} from 'react-router';
-import {connect} from 'react-redux';
-import $ from 'jquery';
 
 import MarkdownPreview from '../../components/MarkdownPreview';
 
-import Request from '../../utils/Request';
+import {isAdmin} from '../../logic/auth';
+import {publish} from '../../logic/post';
 
-class New extends React.Component {
+export default class New extends React.Component {
   constructor(props) {
     super(props);
 
@@ -23,7 +22,7 @@ class New extends React.Component {
   }
 
   componentWillMount() {
-    if (!this.props.token) {
+    if (!isAdmin()) {
       browserHistory.push('/user/login?returnUrl=/post/new');
     }
   }
@@ -48,7 +47,7 @@ class New extends React.Component {
       this.setState({error: ''});
       const {title, content, category} = this.state;
 
-      await Request.post(Request.URL.postPublish, {title, content, category}, {'X-Token': this.props.token});
+      await publish(title, content, category);
       window.localStorage.removeItem('newPostTitle');
       window.localStorage.removeItem('newPostTag');
       window.localStorage.removeItem('newPostContent');
@@ -143,7 +142,3 @@ class New extends React.Component {
     );
   }
 }
-
-export default connect(state => ({
-  token: state.session && state.session.token
-}))(New);

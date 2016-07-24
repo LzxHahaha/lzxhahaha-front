@@ -8,7 +8,6 @@ var webpack = require('webpack');
 module.exports = {
   devtool: false,
   entry: [
-    'babel-polyfill',
     'whatwg-fetch',
     path.resolve(__dirname, './index.js')
   ],
@@ -57,5 +56,14 @@ module.exports = {
       test: /\.json$/,
       loader: 'json'
     }]
+  },
+  externals: {
+    "jquery": "$",
+    "react": "React",
+    "react-dom": "ReactDOM",
+    "react-router": "ReactRouter",
+    "react-bootstrap": "ReactBootstrap",
+    "markdown": "markdown",
+    "urijs": "URI"
   }
 };
