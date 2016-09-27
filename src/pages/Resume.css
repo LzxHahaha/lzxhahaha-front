@@ -1,0 +1,63 @@
+.paper {
+    border: 1px black double;
+    padding: 30px;
+    background-color: white;
+}
+
+.info {
+    padding-bottom: 20px;
+}
+
+.itemHeader {
+    display: flex;
+    flex-direction: row;
+}
+
+.itemIcon {
+    background-color: #239EC1;
+    width: 10px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.itemText {
+    color: #239EC1;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.itemLine {
+    flex: 1;
+    height: 0;
+    margin-left: 10px;
+    border: 1px dashed #239EC1;
+    align-self: center;
+}
+
+.content {
+    padding: 10px 15px 0 15px;
+}
+
+.projectTitle {
+    margin-bottom: 0;
+}
+
+.projectName {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.projectSubtitle {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.projectLabel {
+    margin-right: 5px;
+}
+
+.projectDetail {
+    margin-top: 10px;
+    margin-bottom: 0;
+}

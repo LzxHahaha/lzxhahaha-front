@@ -33,8 +33,8 @@ export default class Index extends React.Component {
 
         <Grid>
           <Row className={styles.titleView}>
-            <Col xs={12}>
-              <Image responsive className="center-block" src="/images/title.png"/>
+            <Col xs={4} xsOffset={4}>
+              <Image responsive className="center-block" src="http://o8ehwy0fk.bkt.clouddn.com/mie.png?imageView2/0/w/200"/>
             </Col>
           </Row>
           <Row>

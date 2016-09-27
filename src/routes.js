@@ -13,6 +13,10 @@ export default [
       {
         path: 'about',
         component: require('./pages/About').default
+      },
+      {
+        path: 'resume',
+        component: require('./pages/Resume').default
       }
     ]
   }
