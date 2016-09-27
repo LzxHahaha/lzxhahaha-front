@@ -49,15 +49,22 @@
 }
 
 .projectSubtitle {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
+}
+
+.projectLabelView {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 3px;
 }
 
 .projectLabel {
     margin-right: 5px;
+    margin-bottom: 5px;
 }
 
 .projectDetail {
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 0;
 }

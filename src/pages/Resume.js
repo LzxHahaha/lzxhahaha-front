@@ -45,20 +45,27 @@ export default class Resume extends React.Component {
     return (
       <tr key={`${el.name}_${index}`}>
         <td>
-          <div>
+          <Col xs={12}>
             <p className={styles.projectTitle}>
               <span className={styles.projectName}>
                 {el.name}
               </span>
               <small className={styles.projectSubtitle}>{el.time}</small>
-              {
-                !!el.labels && el.labels.map((el, index) => (
-                  <Label bsStyle="primary" className={styles.projectLabel}>{el}</Label>
-                ))
-              }
+              <div className={styles.projectLabelView}>
+                {
+                  !!el.labels && el.labels.map((el, index) => (
+                    <Label bsStyle="primary" className={styles.projectLabel}>{el}</Label>
+                  ))
+                }
+              </div>
             </p>
-            {!!el.detail && <p className={styles.projectDetail}>{el.detail}</p>}
-          </div>
+
+            {
+              !!el.detail && (
+                <p className={styles.projectDetail}>{el.detail}</p>
+              )
+            }
+          </Col>
         </td>
       </tr>
     );
