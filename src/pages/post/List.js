@@ -84,7 +84,7 @@ export default class List extends React.Component {
 
         <Grid>
           <Row className={styles.centerRow}>
-            <Image src="/images/mie.png?v=20160607" width="150" height="150" circle />
+            <Image src="http://o8ehwy0fk.bkt.clouddn.com/mie.png?imageView2/0/w/200" width="150" height="150" circle />
             <h1 className={styles.title}>山的那边海的那边</h1>
           </Row>
 
