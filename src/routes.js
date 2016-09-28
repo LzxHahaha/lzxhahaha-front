@@ -2,22 +2,30 @@
  * Created by LzxHahaha on 2016/5/31.
  */
 
+import Index from './pages/Index';
+import * as Post from './pages/post';
+import * as User from './pages/user';
+import * as Works from './pages/works';
+import About from './pages/About';
+import Resume from './pages/Resume';
+
 export default [
   {
     path: '/',
-    component: require('./pages/index').default,
+    component: Index,
     childRoutes: [
-      require('./pages/post/index'),
-      require('./pages/user/index'),
-      require('./pages/works/index'),
+      Post,
+      User,
+      Works,
       {
         path: 'about',
-        component: require('./pages/About').default
+        component: About
       },
       {
         path: 'resume',
-        component: require('./pages/Resume').default
+        component: Resume
       }
-    ]
+    ],
+    notFound: Index
   }
 ]

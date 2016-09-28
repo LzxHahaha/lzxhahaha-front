@@ -12,11 +12,18 @@ import {autoLogin} from './logic/auth';
 
 function renderRouter(routes) {
   return routes.map((el, index) => {
-    return (
+    return !!el.childRoutes ? (
       <Route key={`route_${el.path}_${index}`} path={el.path}>
         <IndexRoute component={el.component} />
-        {el.childRoutes && renderRouter(el.childRoutes)}
+        {renderRouter(el.childRoutes)}
+        {
+          !!el.notFound && (
+            <Route path="*" component={el.notFound} />
+          )
+        }
       </Route>
+    ) : (
+      <Route key={`route_${el.path}_${index}`} path={el.path} component={el.component} />
     )
   });
 }
