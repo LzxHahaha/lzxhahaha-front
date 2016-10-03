@@ -44,6 +44,18 @@ export default class About extends React.Component {
 
         <Grid>
           <Row>
+            <div className={styles.header}>
+              <iframe
+                className={styles.frame}
+                src="http://o8ehwy0fk.bkt.clouddn.com/game/index.html"
+                scrolling="no"
+              />
+            </div>
+          </Row>
+        </Grid>
+
+        <Grid>
+          <Row>
             <Nav bsStyle="tabs" justified activeKey={this.state.activeTab} onSelect={(i)=>this.handleSelect(i)}>
               <NavItem eventKey={1}>关于我</NavItem>
               <NavItem eventKey={2}>关于本站</NavItem>
