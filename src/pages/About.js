@@ -8,6 +8,7 @@ import {Grid, Row, Col, Nav, NavItem} from 'react-bootstrap';
 import styles from './About.css';
 
 import {setTitle} from '../utils/helper';
+import Game from '../utils/Game';
 
 export default class About extends React.Component {
   constructor(props) {
@@ -18,6 +19,11 @@ export default class About extends React.Component {
     };
 
     setTitle('关于');
+  }
+
+  componentDidMount() {
+    var canvas = document.getElementById('canvas');
+    Game.init(canvas);
   }
 
   handleSelect(activeTab) {
@@ -45,11 +51,7 @@ export default class About extends React.Component {
         <Grid>
           <Row>
             <div className={styles.header}>
-              <iframe
-                className={styles.frame}
-                src="http://o8ehwy0fk.bkt.clouddn.com/game/index.html"
-                scrolling="no"
-              />
+              <canvas id="canvas" height="160" width="340"/>
             </div>
           </Row>
         </Grid>
