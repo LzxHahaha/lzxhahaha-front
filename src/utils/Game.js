@@ -278,39 +278,41 @@ function Game(canvas, options) {
     }
     jumpDelta = JUMP_DELTA;
     jumpHeight = JUMP_DELTA;
-    this.jumpUp = true;
   }).bind(this);
 }
 
 Game.init = function (canvas, options) {
-  window.onload = function () {
-    if (window.innerWidth >= 680) {
-      canvas.width = 680;
-    }
-    let game = new Game(canvas, options);
-
-    function onSpacePress() {
-      if (game.status === STATUS.STOP) {
-        game.start();
-      }
-      else if (game.status === STATUS.START) {
-        game.jump();
-      }
-      else if (game.status === STATUS.OVER) {
-        game.restart();
-      }
-    }
-
-    canvas.parentNode.onkeypress = function (e) {
-      if (e.key === ' ') {
-        onSpacePress();
-      }
-    };
-    canvas.parentNode.onclick = onSpacePress;
-
-    window.onBlur = game.pause;
-    window.onFocus = game.goOn;
+  if (window.innerWidth >= 680) {
+    canvas.width = 680;
   }
+  let game = new Game(canvas, options);
+
+  function onSpacePress() {
+    if (game.status === STATUS.STOP) {
+      game.start();
+    }
+    else if (game.status === STATUS.START) {
+      game.jump();
+    }
+    else if (game.status === STATUS.OVER) {
+      game.restart();
+    }
+  }
+
+  canvas.parentNode.onkeypress = function (e) {
+    if (e.key === ' ') {
+      onSpacePress();
+    }
+  };
+  canvas.parentNode.onclick = onSpacePress;
+
+  window.onblur = game.pause;
+  window.onfocus = game.goOn;
+};
+
+Game.clear = function () {
+  window.onBlur = null;
+  window.onfocus = null;
 };
 
 export default Game;
