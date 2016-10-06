@@ -64,11 +64,11 @@ export default class List extends React.Component {
     }
 
     let doms = [];
-    categorySet.forEach((el, index)=>doms.push(
+    categorySet.forEach((el, index) => doms.push(
       <Label key={`label${index}`}
-             bsStyle={el===tag?'success':'info'}
+             bsStyle={el === tag ? 'success' : 'info'}
              className={styles.tag}
-             onClick={()=>this.onTagClick(el)}
+             onClick={() => this.onTagClick(el)}
       >
         # {el}
       </Label>
@@ -100,7 +100,7 @@ export default class List extends React.Component {
                   }
                 </h4>
                 <hr/>
-                <Row>
+                <Row className={styles.tags}>
                   {this.renderTags()}
                 </Row>
               </Card>
