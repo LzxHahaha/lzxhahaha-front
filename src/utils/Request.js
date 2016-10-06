@@ -28,7 +28,7 @@ export default class Request {
       method,
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
         ...header
       }
     };
@@ -37,11 +37,11 @@ export default class Request {
       url = URI(url).query(params).toString();
     }
     else if (method === 'POST' || method === 'PUT') {
-      let body = [];
+      let body = {};
       for (let param in params) {
-        body.push(param + '=' + params[param]);
+        body[param] = params[param];
       }
-      options.body = body.join('&');
+      options.body = JSON.stringify(body);
     }
 
     try {
