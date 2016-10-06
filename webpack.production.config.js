@@ -58,7 +58,7 @@ module.exports = {
     }, {
       test: /\.(png|jpe?g)$/,
       loaders: [
-        'url-loader?limit=8192'
+        'url-loader'
       ]
     }]
   },
