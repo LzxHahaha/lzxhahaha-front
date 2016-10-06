@@ -22,8 +22,8 @@ export default class About extends React.Component {
   }
 
   componentDidMount() {
-    var canvas = document.getElementById('canvas');
-    Game.init(canvas);
+    // var canvas = document.getElementById('canvas');
+    // Game.init(canvas);
   }
 
   handleSelect(activeTab) {
@@ -51,7 +51,7 @@ export default class About extends React.Component {
         <Grid>
           <Row>
             <div className={styles.header}>
-              <canvas id="canvas" height="160" width="340"/>
+              <Game />
             </div>
           </Row>
         </Grid>
