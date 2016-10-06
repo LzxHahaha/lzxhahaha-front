@@ -20,7 +20,7 @@ export default class Game extends React.Component {
     let imageLoadCount = 0;
     let onImageLoaded = () => {
       ++imageLoadCount;
-      if (imageLoadCount === 4) {
+      if (imageLoadCount === 3) {
         this.__draw();
       }
     };
@@ -37,7 +37,6 @@ export default class Game extends React.Component {
     skyImage.onload = onImageLoaded;
     groundImage.onload = onImageLoaded;
     playerImage.onload = onImageLoaded;
-    obstacleImage.onload = onImageLoaded;
 
     skyImage.src = "http://o8ehwy0fk.bkt.clouddn.com/game/img/cloud.png";
     groundImage.src = "http://o8ehwy0fk.bkt.clouddn.com/game/img/ground.png";

@@ -34,10 +34,11 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-3": "^6.5.0",
     "css-loader": "^0.23.1",
-    "json-loader": "^0.5.4",
     "jquery": "^2.2.4",
+    "json-loader": "^0.5.4",
     "postcss-loader": "^0.9.1",
     "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "whatwg-fetch": "^1.0.0"
   }
