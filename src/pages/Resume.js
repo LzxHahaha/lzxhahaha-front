@@ -6,6 +6,11 @@ import {Grid, Row, Col, Table, Label} from 'react-bootstrap';
 
 import styles from './Resume.css';
 
+const INTERNSHIP = [
+  {name: '杭州起码科技有限公司（有赞）', time: '2016.10~至今', post: 'PHP开发实习生'},
+  {name: '杭州欧石南网络科技有限公司', time: '2015.11~2016.08', post: 'React Native研发实习生'}
+];
+
 const PROJECTS = [
   {name: '浙工大小黄丫项目', time: '2016.08~2016.09', labels: ['RN', 'Express.js', 'MySQL', 'Redis'], detail: '独立完成 App 的页面实现以及 SDK 接入，以及后台 API'},
   {name: '北京 VCONT 项目', time: '2016.08~2016.09', labels: ['RN'], detail: '独立完成 App 的页面以及接口联调'},
@@ -117,7 +122,7 @@ export default class Resume extends React.Component {
              <Col md={8} mdOffset={2} className={styles.paper}>
                <h3>
                  梁祖玄<br/>
-                 <small>求职意向：Node.js开发</small>
+                 <small>求职意向：Unknown</small>
                </h3>
 
                <Row className={styles.info}>
@@ -171,11 +176,15 @@ export default class Resume extends React.Component {
                <Item header="实习经历" id="internship">
                  <Table hover>
                    <tbody>
-                   <tr>
-                     <td>2015.11~2016.08</td>
-                     <td>杭州欧石南网络科技有限公司</td>
-                     <td>React Native 研发</td>
-                   </tr>
+                   {
+                     INTERNSHIP.map((el, index) => (
+                       <tr key={`job${index}`}>
+                         <td>{el.time}</td>
+                         <td>{el.name}</td>
+                         <td>{el.post}</td>
+                       </tr>
+                     ))
+                   }
                    </tbody>
                  </Table>
                </Item>
