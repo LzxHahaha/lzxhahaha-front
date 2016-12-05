@@ -7,7 +7,6 @@ import {Grid, Row, Col, Table, Label} from 'react-bootstrap';
 import styles from './Resume.css';
 
 const INTERNSHIP = [
-  {name: '杭州起码科技有限公司（有赞）', time: '2016.10~至今', post: 'PHP开发实习生'},
   {name: '杭州欧石南网络科技有限公司', time: '2015.11~2016.08', post: 'React Native研发实习生'}
 ];
 
