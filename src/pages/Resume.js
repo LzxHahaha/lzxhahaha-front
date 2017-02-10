@@ -7,10 +7,12 @@ import {Grid, Row, Col, Table, Label} from 'react-bootstrap';
 import styles from './Resume.css';
 
 const INTERNSHIP = [
-  {name: '杭州欧石南网络科技有限公司', time: '2015.11~2016.08', post: 'React Native研发实习生'}
+  {name: '杭州欧石南网络科技有限公司', time: '2015.11~2016.08', post: 'React Native研发实习生'},
+  {name: '杭州起码科技有限公司（有赞）', time: '2016.10~2016.12', post: 'PHP实习生'}
 ];
 
 const PROJECTS = [
+  {name: '图像检索系统', time: '2016.12~2017.02', labels: ['React', 'Flask', 'OpenCV'], detail: '毕业设计，基于内容的图像平台，独立完成前端+后台+图像处理'},
   {name: '浙工大小黄丫项目', time: '2016.08~2016.09', labels: ['RN', 'Express.js', 'MySQL', 'Redis'], detail: '独立完成 App 的页面实现以及 SDK 接入，以及后台 API'},
   {name: '北京 VCONT 项目', time: '2016.08~2016.09', labels: ['RN'], detail: '独立完成 App 的页面以及接口联调'},
   {name: 'PHP简易框架实现', time: '2016.07~2016.08', labels: ['PHP'], detail: '实现了一个可以处理路由，匹配 Middleware 以及 Controller 的 PHP 框架'},
