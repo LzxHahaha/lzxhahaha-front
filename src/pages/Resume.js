@@ -123,7 +123,7 @@ export default class Resume extends React.Component {
              <Col md={8} mdOffset={2} className={styles.paper}>
                <h3>
                  梁祖玄<br/>
-                 <small>求职意向：Unknown</small>
+                 <small>求职意向：前端或后台(PHP/Node.js)开发</small>
                </h3>
 
                <Row className={styles.info}>
