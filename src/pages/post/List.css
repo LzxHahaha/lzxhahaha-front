@@ -22,6 +22,11 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0 5px 5px;
 }
 
+.listHolder {
+    text-align: center;
+    margin: 0;
+}
+
 .tags {
     display: flex;
     flex-wrap: wrap;

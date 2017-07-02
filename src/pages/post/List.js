@@ -2,8 +2,8 @@
  * Created by LzxHahaha on 2016/5/31.
  */
 
-import {Grid, Row, Col, Image, ListGroup, Label} from 'react-bootstrap';
-import {browserHistory} from 'react-router'
+import { Grid, Row, Col, Image, ListGroup, Label } from 'react-bootstrap';
+import { browserHistory } from 'react-router'
 
 import styles from './List.css';
 
@@ -11,9 +11,9 @@ import Item from '../../components/PostItem';
 import Card from '../../components/Card';
 
 import Request from '../../utils/Request';
-import {setTitle} from '../../utils/helper';
+import { setTitle } from '../../utils/helper';
 
-import {getPostList} from '../../logic/post';
+import { getPostList } from '../../logic/post';
 
 export default class List extends React.Component {
   constructor(props) {
@@ -22,28 +22,36 @@ export default class List extends React.Component {
     this.state = {
       data: [],
       categorySet: [],
-      tag: ''
+      tag: '',
+      loading: true
     };
     setTitle('博客');
   }
 
   async componentWillMount() {
-    let data = await getPostList();
-    let categorySet = new Set();
-    data.forEach(el=>{
-      categorySet.add(el.category);
-    });
+    try {
+      let data = await getPostList();
+      let categorySet = new Set();
+      data.forEach(el => {
+        categorySet.add(el.category);
+      });
 
-    let tag = this.props.location.query.tag || '';
-    if (tag) {
-      data = data.filter(el=>el.category===tag);
+      let tag = this.props.location.query.tag || '';
+      if (tag) {
+        data = data.filter(el => el.category === tag);
+      }
+
+      this.setState({ data, categorySet, tag });
+    } catch (err) {
+      alert('网络错误');
+    } finally {
+      this.setState({ loading: false });
     }
 
-    this.setState({data, categorySet, tag});
   }
 
   async onTagClick(tagText) {
-    const {tag} = this.state;
+    const { tag } = this.state;
 
     if (tag === tagText) {
       return;
@@ -53,11 +61,11 @@ export default class List extends React.Component {
     browserHistory.push(tagText ? `/post?tag=${tagText}` : '/post');
     let data = await getPostList(tagText);
 
-    this.setState({tag: tagText, data});
+    this.setState({ tag: tagText, data });
   }
 
   renderTags() {
-    const {categorySet, tag} = this.state;
+    const { categorySet, tag } = this.state;
 
     if (!categorySet) {
       return [];
@@ -80,7 +88,7 @@ export default class List extends React.Component {
     return (
       <div>
         <NavBar />
-        <div className={styles.header}></div>
+        <div className={styles.header} />
 
         <Grid>
           <Row className={styles.centerRow}>
@@ -95,26 +103,32 @@ export default class List extends React.Component {
                   所有标签
                   {
                     this.state.tag ? (
-                      <Label bsStyle="info" className={styles.tag} onClick={()=>this.onTagClick('')}>查看全部</Label>
+                      <Label bsStyle="info" className={styles.tag} onClick={() => this.onTagClick('')}>查看全部</Label>
                     ) : null
                   }
                 </h4>
-                <hr/>
+                <hr />
                 <Row className={styles.tags}>
                   {this.renderTags()}
                 </Row>
               </Card>
             </Col>
             <Col mdPull={4} md={8}>
-              <ListGroup className={styles.list}>
-                {
-                  this.state.data.length > 0
-                    ? this.state.data.map((el, index) => (
-                        <Item data={el} key={`post${el.id}`}/>
+              {
+                this.state.data.length > 0
+                  ? (
+                    <ListGroup className={styles.list}>this.state.data.map((el, index) => (
+                      <Item data={el} key={`post${el.id}`} />
                       ))
-                    : (<Card>正在加载...</Card>)
-                }
-              </ListGroup>
+                    </ListGroup>
+                  ) : (
+                    <Card>
+                      <p className={styles.listHolder}>
+                        { this.state.loading ? '正在加载...' : '暂无数据' }
+                      </p>
+                    </Card>
+                  )
+              }
             </Col>
           </Row>
         </Grid>
