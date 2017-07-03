@@ -3,14 +3,14 @@
  */
 
 module.exports = {
-  path: 'user',
+  path: '/user',
   childRoutes: [
     {
-      path: 'login',
+      path: '/login',
       component: require('./Login').default
     },
     {
-      path: 'register',
+      path: '/register',
       component: require('./Register').default
     }
   ]

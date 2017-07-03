@@ -3,14 +3,13 @@
  */
 
 import { Grid, Row, Col, Image, ListGroup, Label } from 'react-bootstrap';
-import { browserHistory } from 'react-router'
+// import { browserHistory } from 'react-router'
 
 import styles from './List.css';
 
 import Item from '../../components/PostItem';
 import Card from '../../components/Card';
 
-import Request from '../../utils/Request';
 import { setTitle } from '../../utils/helper';
 
 import { getPostList } from '../../logic/post';
@@ -51,17 +50,17 @@ export default class List extends React.Component {
   }
 
   async onTagClick(tagText) {
-    const { tag } = this.state;
-
-    if (tag === tagText) {
-      return;
-    }
-
-    // 改变地址栏
-    browserHistory.push(tagText ? `/post?tag=${tagText}` : '/post');
-    let data = await getPostList(tagText);
-
-    this.setState({ tag: tagText, data });
+    // const { tag } = this.state;
+    //
+    // if (tag === tagText) {
+    //   return;
+    // }
+    //
+    // // 改变地址栏
+    // browserHistory.push(tagText ? `/post?tag=${tagText}` : '/post');
+    // let data = await getPostList(tagText);
+    //
+    // this.setState({ tag: tagText, data });
   }
 
   renderTags() {
@@ -117,9 +116,12 @@ export default class List extends React.Component {
               {
                 this.state.data.length > 0
                   ? (
-                    <ListGroup className={styles.list}>this.state.data.map((el, index) => (
-                      <Item data={el} key={`post${el.id}`} />
-                      ))
+                    <ListGroup className={styles.list}>
+                      {
+                        this.state.data.map(el => (
+                          <Item data={el} key={`post${el.id}`} />
+                        ))
+                      }
                     </ListGroup>
                   ) : (
                     <Card>
