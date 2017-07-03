@@ -7,7 +7,7 @@ import { Switch, Route } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory'
 
 import routes from './routes';
-import Index from './pages/Index';
+import NotFound from './pages/NotFound';
 
 import { autoLogin } from './logic/auth';
 
@@ -15,11 +15,11 @@ function renderRouter(routes) {
   return routes.map((el, index) => {
     return (el.childRoutes && el.childRoutes > 0) ? (
       <Switch key={`route_${el.path}_${index}`}>
-        <Route path={el.path} component={el.component} />
+        <Route exact path={el.path} component={el.component} />
         { renderRouter(el.childRoutes) }
       </Switch>
     ) : (
-      <Route key={`route_${el.path}_${index}`} path={el.path} component={el.component} />
+      <Route exact key={`route_${el.path}_${index}`} path={el.path} component={el.component} />
     );
   });
 }
@@ -44,7 +44,7 @@ export default class App extends React.Component {
           {
             renderRouter(routes)
           }
-          <Route component={Index}/>
+          <Route component={NotFound}/>
         </Switch>
       </Router>
     );
