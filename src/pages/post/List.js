@@ -35,13 +35,15 @@ export default class List extends React.Component {
         categorySet.add(el.category);
       });
 
-      let tag = this.props.location.query.tag || '';
-      if (tag) {
-        data = data.filter(el => el.category === tag);
-      }
+      let tag = '';
+      // let tag = this.props.location.query.tag || '';
+      // if (tag) {
+      //   data = data.filter(el => el.category === tag);
+      // }
 
       this.setState({ data, categorySet, tag });
     } catch (err) {
+      console.log(err);
       alert('网络错误');
     } finally {
       this.setState({ loading: false });

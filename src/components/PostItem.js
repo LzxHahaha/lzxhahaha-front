@@ -3,7 +3,7 @@
  */
 
 import $ from 'jquery';
-import markdown from 'markdown';
+import { parse } from 'markdown';
 import {ListGroupItem, Label} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 
@@ -21,7 +21,7 @@ export default class PostItem extends React.Component {
   }
 
   componentWillMount() {
-    let html = markdown.toHTML(this.rawContent);
+    let html = parse(this.rawContent);
     let content = '';
 
     ($.parseHTML(html) || []).forEach(el=>content += el.textContent);

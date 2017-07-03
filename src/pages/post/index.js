@@ -3,19 +3,19 @@
  */
 
 module.exports = {
-  path: 'post',
+  path: '/post',
   component: require('./List').default,
   childRoutes: [
     {
-      path: 'detail/:id',
+      path: '/detail/:id',
       component: require('./Detail').default
     },
     {
-      path: 'new',
+      path: '/new',
       component: require('./New').default
     },
     {
-      path: 'edit/:id',
+      path: '/edit/:id',
       component: require('./Edit').default
     }
   ]

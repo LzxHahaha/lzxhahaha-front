@@ -8,6 +8,7 @@ const merge = require('webpack-merge');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const baseWebpackConfig = require('./webpack.base');
 const htmlWebpackPluginConfig = require('./config/htmlWebpackPluginConfig');
@@ -42,6 +43,9 @@ module.exports = merge(baseWebpackConfig, {
     new FriendlyErrorsWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HTMLWebpackPlugin(htmlWebpackPluginConfig),
-    new HtmlWebpackHarddiskPlugin()
+    new HtmlWebpackHarddiskPlugin(),
+    new CopyWebpackPlugin([
+      { from: path.resolve(__dirname, 'assets'), to: path.resolve(__dirname, 'build/assets'), force: true }
+    ])
   ]
 });
