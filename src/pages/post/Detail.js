@@ -2,8 +2,10 @@
  * Created by LzxHahaha on 2016/5/31.
  */
 
-import {Grid, Row, Col, Label, Pager, PageItem, ButtonGroup, Button, Modal} from 'react-bootstrap';
-import {browserHistory} from 'react-router';
+import { Component, PropTypes } from 'react';
+import { LinkContainer } from 'react-router-bootstrap';
+import { Grid, Row, Col, Label, Pager, ButtonGroup, Button, Modal } from 'react-bootstrap';
+// import {browserHistory} from 'react-router';
 
 import MarkdownPreview from '../../components/MarkdownPreview';
 import FontAwesome from 'react-fontawesome';
@@ -11,12 +13,11 @@ import QRCode from 'qrcode.react';
 
 import styles from './Detail.css';
 
-import Request from '../../utils/Request';
 import {formatTime, setTitle} from '../../utils/helper';
 
 import {getPostDetail} from '../../logic/post';
 
-export default class Detail extends React.Component {
+export default class Detail extends Component {
   constructor(props) {
     super(props);
 
@@ -32,8 +33,8 @@ export default class Detail extends React.Component {
 
   async componentWillMount() {
     try {
-      let detail = await getPostDetail(this.props.params.id);
-      this.setState({detail, currentId: this.props.params.id, isLoading: false});
+      let detail = await getPostDetail(this.props.match.params.id);
+      this.setState({detail, currentId: this.props.match.params.id, isLoading: false});
 
       setTitle(detail.title);
     }
@@ -44,7 +45,7 @@ export default class Detail extends React.Component {
 
   async onPagerClick(id) {
     if (id) {
-      browserHistory.push(`/post/detail/${id}`);
+      this.props.history.push(`/post/detail/${id}`);
       this.setState({isLoading: true});
       let detail = await getPostDetail(id);
       this.setState({detail, currentId: id, isLoading: false});
@@ -52,15 +53,14 @@ export default class Detail extends React.Component {
       window.scrollTo(0, 0);
     }
     else {
-      browserHistory.push('/post');
+      this.props.history.push(`/post`);
     }
   }
 
   onSharePress(type) {
-    const {currentId, detail} = this.state;
+    const { detail } = this.state;
 
-    let url = `http://139.129.131.68/post/detail/${currentId}`;
-    let shareUrl = `http://www.jiathis.com/send/?webid=${type}&url=${url}&title=${detail.title}&summary=from LZXHAHAHA`;
+    let shareUrl = `http://www.jiathis.com/send/?webid=${type}&url=${window.location.href}&title=${detail.title}&summary=from LZXHAHAHA`;
 
     switch (type) {
       case 'wechat':
@@ -82,7 +82,7 @@ export default class Detail extends React.Component {
       <div>
         <NavBar />
 
-        <div className={styles.header}></div>
+        <div className={styles.header}/>
 
         <Grid>
           <div className={styles.titleView}>
@@ -133,16 +133,12 @@ export default class Detail extends React.Component {
           {
             !isLoading && (
               <Pager>
-                <PageItem previous
-                          onClick={()=>this.onPagerClick(detail.prev)}
-                >
+                <Pager.Item previous onClick={()=>this.onPagerClick(detail.prev)}>
                   {detail.prev ? '← 上一篇' : '返回列表'}
-                </PageItem>
-                <PageItem next
-                          onClick={()=>this.onPagerClick(detail.next)}
-                >
+                </Pager.Item>
+                <Pager.Item next onClick={()=>this.onPagerClick(detail.next)}>
                   {detail.next ? '下一篇 →' : '返回列表'}
-                </PageItem>
+                </Pager.Item>
               </Pager>
             )
           }
@@ -153,7 +149,7 @@ export default class Detail extends React.Component {
             <Modal.Title>扫码分享到微信</Modal.Title>
           </Modal.Header>
           <Modal.Body className="text-center">
-            <QRCode value={`http://139.129.131.68/post/detail/${this.state.currentId}`} size={256}/>
+            <QRCode value={window.location.href} size={256}/>
           </Modal.Body>
         </Modal>
       </div>
