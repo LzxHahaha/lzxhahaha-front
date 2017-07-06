@@ -32,11 +32,13 @@ module.exports = merge(baseWebpackConfig, {
     })),
     new HtmlWebpackIncludeAssetsPlugin({
       assets: [
+        '/cdn.bootcss.com/babel-polyfill/6.9.1/polyfill.min.js',
         '/cdn.bootcss.com/jquery/2.2.4/jquery.min.js',
         '/cdn.bootcss.com/react/15.6.1/react.min.js',
         '/cdn.bootcss.com/react/15.6.1/react-dom.min.js',
-        "/cdn.bootcss.com/react-router-dom/4.1.1/react-router-dom.min.js",
         '/cdn.bootcss.com/react-router/2.4.1/ReactRouter.min.js',
+        '/cdn.bootcss.com/react-router-dom/4.1.1/react-router-dom.min.js',
+        '/cdn.bootcss.com/react-bootstrap/0.31.0/react-bootstrap.min.js',
         '/cdn.bootcss.com/markdown.js/0.5.0/markdown.min.js',
         'urijs-1.18.1.min.js',
       ],
