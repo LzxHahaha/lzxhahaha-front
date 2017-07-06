@@ -2,8 +2,7 @@
  * Created by LzxHahaha on 2016/5/31.
  */
 
-import { Component, PropTypes } from 'react';
-import { LinkContainer } from 'react-router-bootstrap';
+import { Component } from 'react';
 import { Grid, Row, Col, Label, Pager, ButtonGroup, Button, Modal } from 'react-bootstrap';
 // import {browserHistory} from 'react-router';
 
