@@ -4,6 +4,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -39,11 +40,15 @@ module.exports = {
 
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]--[hash:base64:5]',
-          'postcss-loader'
-        ]
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]--[hash:base64:5]"
+        })
+        // use: [
+        //   'style-loader',
+        //   'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]--[hash:base64:5]',
+        //   'postcss-loader'
+        // ]
       },
 
       {
@@ -70,6 +75,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       React: 'react',
       NavBar: __dirname + '/src/components/NavBar'
-    })
+    }),
+    new ExtractTextPlugin("styles.css")
   ]
 };

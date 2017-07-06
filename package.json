@@ -6,7 +6,7 @@
     "start": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.dev.js",
     "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base build",
-    "deploy": "webpack --config webpack.production.config.js --display-modules --sort-modules-by size"
+    "deploy": "webpack --config webpack.prod.js --display-modules --sort-modules-by size"
   },
   "dependencies": {
     "classnames": "^2.2.5",
@@ -38,11 +38,14 @@
     "babel-preset-stage-3": "^6.5.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^2.1.2",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-harddisk-plugin": "^0.1.0",
+    "html-webpack-include-assets-plugin": "^0.0.5",
     "html-webpack-plugin": "^2.29.0",
     "jquery": "^2.2.4",
     "json-loader": "^0.5.4",
+    "optimize-css-assets-webpack-plugin": "^2.0.0",
     "postcss-loader": "^0.9.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",

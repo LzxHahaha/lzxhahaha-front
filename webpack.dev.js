@@ -21,7 +21,7 @@ module.exports = merge(baseWebpackConfig, {
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
-    publicPath: `/assets/`
+    publicPath: `/`
   },
 
   devtool: 'source-map',
@@ -30,7 +30,7 @@ module.exports = merge(baseWebpackConfig, {
     hot: true,
     historyApiFallback: true,
     contentBase: path.resolve(__dirname, 'build'),
-    publicPath: '/assets/',
+    publicPath: '/',
     inline: true,
     port: PORT,
 
@@ -45,7 +45,7 @@ module.exports = merge(baseWebpackConfig, {
     new HTMLWebpackPlugin(htmlWebpackPluginConfig),
     new HtmlWebpackHarddiskPlugin(),
     new CopyWebpackPlugin([
-      { from: path.resolve(__dirname, 'assets'), to: path.resolve(__dirname, 'build/assets'), force: true }
+      { from: path.resolve(__dirname, 'assets'), to: path.resolve(__dirname, 'build'), force: true }
     ])
   ]
 });

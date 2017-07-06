@@ -38,10 +38,10 @@ export default class About extends React.Component {
         <div className={styles.header}>
           <AvtImage
             layers={[
-              'http://o8ehwy0fk.bkt.clouddn.com/back.png',
-              'http://o8ehwy0fk.bkt.clouddn.com/front.png'
+              '/images/back.jpg',
+              '/images/front.png'
             ]}
-            staticFallback="http://o8ehwy0fk.bkt.clouddn.com/static.jpg"
+            staticFallback="/images/static.jpg"
             isStatic={false}
             className={'thisIsOptional'}
             style={{ width: 320, height: 190 }}
