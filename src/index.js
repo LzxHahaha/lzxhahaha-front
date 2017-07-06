@@ -3,6 +3,7 @@
  */
 
 import ReactDOM from 'react-dom';
+import 'prop-types';
 
 import App from './App';
 
