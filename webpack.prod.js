@@ -40,7 +40,7 @@ module.exports = merge(baseWebpackConfig, {
         '/cdn.bootcss.com/react-router-dom/4.1.1/react-router-dom.min.js',
         '/cdn.bootcss.com/react-bootstrap/0.31.0/react-bootstrap.min.js',
         '/cdn.bootcss.com/markdown.js/0.5.0/markdown.min.js',
-        'urijs-1.18.1.min.js',
+        'urijs.1.18.1.min.js',
       ],
       append: false
     }),
