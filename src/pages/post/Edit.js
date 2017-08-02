@@ -23,7 +23,7 @@ export default class Edit extends React.Component {
 
   async componentWillMount() {
     if (!isAdmin()) {
-      browserHistory.push(`/user/login?returnUrl=/post/edit/${this.props.params.id}`);
+      this.props.history.replace(`/user/login?returnUrl=/post/edit/${this.props.params.id}`);
     }
 
     try {
@@ -45,7 +45,7 @@ export default class Edit extends React.Component {
       const {title, content, category} = this.state;
 
       await edit(this.props.params.id, title, content, category);
-      browserHistory.push('/post');
+      this.props.history.push('/post');
     }
     catch (err) {
       console.log(err);

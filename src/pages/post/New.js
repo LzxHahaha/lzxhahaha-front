@@ -23,7 +23,7 @@ export default class New extends React.Component {
 
   componentWillMount() {
     if (!isAdmin()) {
-      browserHistory.push('/user/login?returnUrl=/post/new');
+      this.props.history.replace('/user/login?returnUrl=/post/new');
     }
   }
 
@@ -51,7 +51,7 @@ export default class New extends React.Component {
       window.localStorage.removeItem('newPostTitle');
       window.localStorage.removeItem('newPostTag');
       window.localStorage.removeItem('newPostContent');
-      browserHistory.push('/post');
+      this.props.history.push('/post');
     }
     catch (err) {
       console.log(err);

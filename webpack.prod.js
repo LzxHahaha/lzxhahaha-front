@@ -28,12 +28,11 @@ module.exports = merge(baseWebpackConfig, {
       }
     }),
     new HTMLWebpackPlugin(Object.assign({}, htmlWebpackPluginConfig, {
-      lib: ['jquery', 'react', 'react-dom', 'react-router', 'react-router-dom', 'react-bootstrap', 'markdown', 'urijs']
+      lib: ['react', 'react-dom', 'react-router', 'react-router-dom', 'react-bootstrap', 'markdown', 'urijs']
     })),
     new HtmlWebpackIncludeAssetsPlugin({
       assets: [
         '/cdn.bootcss.com/babel-polyfill/6.9.1/polyfill.min.js',
-        '/cdn.bootcss.com/jquery/2.2.4/jquery.min.js',
         '/cdn.bootcss.com/react/15.6.1/react.min.js',
         '/cdn.bootcss.com/react/15.6.1/react-dom.min.js',
         '/cdn.bootcss.com/react-router/4.1.1/react-router.min.js',
@@ -55,7 +54,6 @@ module.exports = merge(baseWebpackConfig, {
   ],
 
   externals: {
-    "jquery": "$",
     "react": "React",
     "react-dom": "ReactDOM",
     "react-router": "ReactRouter",

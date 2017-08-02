@@ -44,12 +44,9 @@ export default class Index extends React.Component {
                 <br/>
                 <p>奇怪的文章集合</p>
                 <br/>
-                <ButtonGroup>
-                  <LinkContainer to="/post">
-                    <Button bsStyle="success">查看全部</Button>
-                  </LinkContainer>
-                  <Button href="http://139.129.131.68:3096/rss">订阅RSS</Button>
-                </ButtonGroup>
+                <LinkContainer to="/post">
+                  <Button bsStyle="success">查看全部</Button>
+                </LinkContainer>
               </Card>
             </Col>
             <Col xs={12} md={4}>

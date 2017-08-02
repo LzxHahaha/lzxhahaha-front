@@ -3,7 +3,6 @@
  */
 
 import { Grid, Row, Col, Image, ListGroup, Label } from 'react-bootstrap';
-// import { browserHistory } from 'react-router'
 
 import styles from './List.css';
 

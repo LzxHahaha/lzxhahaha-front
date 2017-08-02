@@ -27,10 +27,10 @@ export default class Register extends React.Component {
 
       await register(username, password);
       if (returnUrl) {
-        browserHistory.push(returnUrl);
+        this.props.history.push(returnUrl);
       }
       else {
-        browserHistory.push('/');
+        this.props.history.push('/');
       }
     }
     catch (err) {

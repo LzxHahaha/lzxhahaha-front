@@ -2,12 +2,12 @@
  * Created by LzxHahaha on 2016/6/9.
  */
 
-import $ from 'jquery';
-import { toHTML } from 'markdown';
-import {ListGroupItem, Label} from 'react-bootstrap';
-import {LinkContainer} from 'react-router-bootstrap';
+import * as React from 'react';
+import { parse } from 'markdown';
+import { ListGroupItem, Label } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
-import {formatTime} from '../utils/helper';
+import { formatTime } from '../utils/helper';
 
 export default class PostItem extends React.Component {
   constructor(props) {
@@ -21,11 +21,11 @@ export default class PostItem extends React.Component {
   }
 
   componentWillMount() {
-    let html = toHTML(this.rawContent);
-    let content = '';
+    let html = parse(this.rawContent);
+    const div = document.createElement('div');
+    div.innerHTML = html;
 
-    ($.parseHTML(html) || []).forEach(el => content += el.textContent);
-    content = content.length > 200 ? content.substring(0, 200) + '...' : content;
+    const content = div.innerText.length > 200 ? div.innerText.substring(0, 200) + '...' : div.innerText;
     this.setState({content});
   }
 

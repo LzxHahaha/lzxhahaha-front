@@ -28,10 +28,10 @@ export default class Login extends React.Component {
 
       await login(username, password);
       if (returnUrl) {
-        browserHistory.push(returnUrl);
+        this.props.history.push(returnUrl);
       }
       else {
-        browserHistory.push('/');
+        this.props.history.push('/');
       }
     }
     catch (err) {
