@@ -3,6 +3,7 @@
  */
 
 import { browserHistory } from 'react-router';
+import queryString from 'query-string';
 
 import {Grid, Well, Form, FormGroup, Col, FormControl, ControlLabel, Button, Label} from 'react-bootstrap';
 
@@ -24,11 +25,11 @@ export default class Login extends React.Component {
       this.setState({error: ''});
 
       const {username, password} = this.state;
-      const returnUrl = (this.props.location && this.props.location.query && this.props.location.query.returnUrl) ? this.props.location.query.returnUrl : '';
+      const query = queryString.parse(this.props.location.search);
 
       await login(username, password);
-      if (returnUrl) {
-        this.props.history.push(returnUrl);
+      if (query && query.returnUrl) {
+        this.props.history.push(query.returnUrl);
       }
       else {
         this.props.history.push('/');
